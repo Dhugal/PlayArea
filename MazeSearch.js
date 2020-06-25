@@ -70,8 +70,8 @@ const traverseMazeDFSRecursive = (maze, startX, startY) => {
 const DFSRecursive = (maze, visited, currentNode) => {
     visited[currentNode.getHash()] = true;
     if(currentNode.isFinish(maze)) {
-        printMaze(maze, visited, currentNode, path);
-        console.log("Finished DFS Recursive Path: " + path.length + " step(s) - " + path);
+        printMaze(maze, visited, currentNode);
+        console.log("Finished DFS Recursive Path: " + currentNode.path.length + " step(s) - " + currentNode.path);
         return true;
     }
     let neighbors = currentNode.getNeighbors(maze, visited);
@@ -142,9 +142,8 @@ const traverseMazeBFS = (maze, startX, startY) => {
     return BFSQueue(maze, visited, currentNode);
 };
 
-const printMaze = (maze, visited, currentNode, path) =>
+const printMaze = (maze, visited, currentNode) =>
 {
-    console.log("Traversal: " + path);
     let finished = currentNode.isFinish(maze);
     for(let x=0;x<maze.length;x++){
         let row = maze[x];
@@ -153,7 +152,7 @@ const printMaze = (maze, visited, currentNode, path) =>
 
         for(let y=0;y<row.length; y++) {
             let n = new node(x, y);
-            let onPath = path.includes(n.getHash());
+            let onPath = currentNode.path.includes(n.getHash());
             if(onPath) {
                 out += "%c"
                 args.push("color: green;")
@@ -194,30 +193,30 @@ const printMaze = (maze, visited, currentNode, path) =>
 }
 
 console.log("----------------------------------------------------");
-console.log("Travers Maze Recursive:")
+console.log("Traverse Maze Recursive:")
 console.log(traverseMazeDFSRecursive(maze1, 5, 0 ));
 console.log("");
 console.log("");
 console.log("----------------------------------------------------");
-console.log("Travers Maze DFS Stack:")
+console.log("Traverse Maze DFS Stack:")
 console.log(traverseMazeDFSStack(maze1, 5, 0 ));
 console.log("");
 console.log("");
 console.log("----------------------------------------------------");
-console.log("Travers Maze BFS Stack - finds shortest path:")
+console.log("Traverse Maze BFS Stack - finds shortest path:")
 console.log(traverseMazeBFS(maze1, 5, 0 ));
 
 
 console.log("----------------------------------------------------");
-console.log("Travers Maze Recursive:")
+console.log("Traverse Maze Recursive:")
 console.log(traverseMazeDFSRecursive(maze2Unsolvable, 5, 0 ));
 console.log("");
 console.log("");
 console.log("----------------------------------------------------");
-console.log("Travers Maze DFS Stack:")
+console.log("Traverse Maze DFS Stack:")
 console.log(traverseMazeDFSStack(maze2Unsolvable, 5, 0 ));
 console.log("");
 console.log("");
 console.log("----------------------------------------------------");
-console.log("Travers Maze BFS Stack - finds shortest path:")
+console.log("Traverse Maze BFS Stack - finds shortest path:")
 console.log(traverseMazeBFS(maze2Unsolvable, 5, 0 ));
