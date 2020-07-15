@@ -1,6 +1,6 @@
 const input1 = [7,1,5,3,6,4];
 const input2 = [7,1,5,0,6,4];
-const input3 = [10,21,9,9,8,21,55,0,20];
+const input3 = [0,48,10,21,9,9,8,21,55];
 
 const GetMaxProfit = (prices) => {
     if(prices === null || prices.length <= 1) {
@@ -23,10 +23,16 @@ const GetMaxProfit = (prices) => {
             sellDay = i;
         }
     }
-    console.log("Buy Day: " + bestBuyDay + ", Sell Day: " + sellDay + ", Max Profit: " + maxProfit);
+    if(maxProfit > 0) {
+        prices[bestBuyDay] = "%c" + prices[bestBuyDay];
+        prices[sellDay] += "%c";
+        console.log("Given " + prices + " you should Buy on Day: " + bestBuyDay + " and Sell on Day: " + sellDay + " producing a Profit of: " + maxProfit, "color: green;", "color: reset;");
+    }
+    else {
+        console.log("Given " + prices + " no profit can be made");
+    }
     return maxProfit;
 };
-
 
 
 console.log(GetMaxProfit(input1));
