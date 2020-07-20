@@ -1,8 +1,10 @@
 const input1 = [7,1,5,3,6,4];
 const input2 = [7,1,5,0,6,4];
 const input3 = [0,48,10,21,9,9,8,21,55];
+const input4 = [0,0,0];
+const input5 = [10,5,0];
 
-const GetMaxProfit = (prices) => {
+const GetMaxProfitAndBuySellDays = (prices) => {
     if(prices === null || prices.length <= 1) {
         return 0;
     }
@@ -34,7 +36,28 @@ const GetMaxProfit = (prices) => {
     return maxProfit;
 };
 
+console.log(GetMaxProfitAndBuySellDays(input1));
+console.log(GetMaxProfitAndBuySellDays(input2));
+console.log(GetMaxProfitAndBuySellDays(input3));
+console.log(GetMaxProfitAndBuySellDays(input4));
+console.log(GetMaxProfitAndBuySellDays(input5));
 
-console.log(GetMaxProfit(input1));
-console.log(GetMaxProfit(input2));
-console.log(GetMaxProfit(input3));
+var GetMaxProfitOnly = function(prices) {
+    let minPrice = Number.MAX_SAFE_INTEGER, maxProfit = 0, diff = null, price = null;
+    for(let i = 0; i < prices.length; i++) {
+        price = prices[i];
+        if(price < minPrice) {
+            minPrice = price;
+        }
+        else if((diff = price - minPrice) > maxProfit) {
+            maxProfit = diff;
+        }
+    }
+    return maxProfit;
+};
+
+console.log(GetMaxProfitOnly(input1));
+console.log(GetMaxProfitOnly(input2));
+console.log(GetMaxProfitOnly(input3));
+console.log(GetMaxProfitOnly(input4));
+console.log(GetMaxProfitOnly(input5));
