@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\StockPrices.js"
+            "program": "${workspaceFolder}\\GraphTraversal_Djikstra.js"
         },
         {
             "name": "Local Process with Kubernetes (Preview)",
