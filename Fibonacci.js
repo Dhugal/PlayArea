@@ -1,5 +1,5 @@
 // Recursive with no cache - ouch.
-// Time Complexity:     O(2^n) - We only calculate each number in the sequence once and cache the result.
+// Time Complexity:     O(2^n) - We calculate each number repeatadly... (E.G. getNthFibBasicRecursive(5) calls getNthFibBasicRecursive(4) and getNthFibBasicRecursive(3), then getNthFibBasicRecursive(4) also calls getNthFibBasicRecursive(3) etc.).
 // Space Complexity:    O(n)   - No result caching but call stack will contain a frame per item (E.G getNthFibBasicRecursive(3) will call getNthFibBasicRecursive(2) and getNthFibBasicRecursive(1) etc.)
 function getNthFibBasicRecursive(n) {
     if(n === 1) {
