@@ -14,18 +14,18 @@ function getNthFibBasicRecursive(n) {
 // Cache / Memoize results to prevent repeated calculations.
 // Time Complexity:     O(n) - We only calculate each number in the sequence once and cache the result.
 // Space Complexity:    O(n) - We store the result of each prior calculation.
-const hashtable = {};
+const cache = {};
 function getNthFibWithMemoization(n) {
-  	if(!hashtable.hasOwnProperty(n)) {
+  	if(!cache.hasOwnProperty(n)) {
         if(n <= 2)
         {
-            hashtable[n]  = n - 1;
+            cache[n]  = n - 1;
         }
         else {
-                hashtable[n] = getNthFibWithMemoization(n - 1) + getNthFibWithMemoization(n - 2);
+            cache[n] = getNthFibWithMemoization(n - 1) + getNthFibWithMemoization(n - 2);
         }
     }
-    return hashtable[n];
+    return cache[n];
 }
 
 // Time Complexity:     O(n) 
